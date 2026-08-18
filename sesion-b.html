@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión B · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+<main class="app">
+
+    <h1>💪 Sesión B</h1>
+    <p class="subtitle">Espalda + Brazos + Abdomen</p>
+
+    <section class="workout-section">
+        <h2>💪 Trabajo de torso</h2>
+
+        <div class="exercise">
+            <h3>Remo unilateral con mancuerna</h3>
+            <p>3 × 10-12 por lado</p>
+            <p class="technique">Apoya una mano y una rodilla en un banco o inclina el torso. Lleva la mancuerna hacia la cadera manteniendo el codo pegado al cuerpo.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Remo con banda abierta</h3>
+            <p>3 × 12-15</p>
+            <p class="technique">Pisa la banda o sujétala a un punto fijo. Tira hacia el abdomen juntando las escápulas y manteniendo los hombros abajo.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Pull-apart con banda</h3>
+            <p>3 × 15</p>
+            <p class="technique">Sujeta la banda frente al pecho y separa las manos hasta abrir los brazos en cruz de forma controlada.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Curl de bíceps con banda</h3>
+            <p>3 × 12</p>
+            <p class="technique">Pisa la banda en el centro y flexiona los codos subiendo las manos hacia los hombros sin mover los codos del torso.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Extensión de tríceps con banda</h3>
+            <p>3 × 12</p>
+            <p class="technique">Ancla la banda arriba o tras la cabeza y extiende los codos controladamente.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Elevaciones laterales</h3>
+            <p>3 × 12-15 · 0,5 kg</p>
+            <p class="technique">Eleva las mancuernas hacia los lados hasta la altura de los hombros, manteniendo un ligero ángulo en los codos.</p>
+        </div>
+    </section>
+
+    <section class="workout-section">
+        <h2>🔥 Trabajo de core</h2>
+
+        <div class="exercise">
+            <h3>Dead bug con pelota pequeña</h3>
+            <p>3 × 10 por lado</p>
+            <p class="technique">Presiona la pelota entre la mano y la rodilla contraria mientras extiendes el brazo y la pierna opuestos.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Bird dog</h3>
+            <p>3 × 10 por lado</p>
+            <p class="technique">Desde cuadrupedia, extiende brazo y pierna contrarios manteniendo el tronco estable y sin arquear la zona lumbar.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Plancha abdominal</h3>
+            <p>3 × 20-30 s</p>
+            <p class="technique">Mantén el cuerpo alineado, con abdomen y glúteos activos.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Heel taps</h3>
+            <p>3 × 12 por lado</p>
+            <p class="technique">Tumbada boca arriba, toca alternativamente los talones con las manos realizando el movimiento de forma controlada.</p>
+        </div>
+    </section>
+
+    <label class="completion">
+       <input type="checkbox" id="sesionBCompletada">
+        <span>✅ Sesión completada</span>
+    </label>
+
+    <button class="back-button" onclick="location.href='entrenamiento.html'">
+        ← Volver a entrenamiento
+    </button>
+
+    <button class="back-button" onclick="location.href='index.html'">
+        🏠 Volver al inicio
+    </button>
+<script>
+    let datosDiarios = obtenerDatosDiarios();
+
+    const checkbox = document.getElementById("sesionBCompletada");
+
+    checkbox.checked = datosDiarios.sesiones.includes("B");
+
+    checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+            if (!datosDiarios.sesiones.includes("B")) {
+                datosDiarios.sesiones.push("B");
+            }
+        } else {
+            datosDiarios.sesiones =
+                datosDiarios.sesiones.filter(sesion => sesion !== "B");
+        }
+
+        guardarDatosDiarios(datosDiarios);
+    });
+</script>
+</main>
+<nav class="bottom-nav">
+
+    <button onclick="location.href='index.html'">
+        🏠
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="location.href='entrenamiento.html'">
+        🏋🏼‍♀️
+        <span>Entreno</span>
+    </button>
+
+    <button onclick="location.href='alimentacion.html'">
+        🍽️
+        <span>Comidas</span>
+    </button>
+
+    <button onclick="location.href='agua.html'">
+        💧
+        <span>Agua</span>
+    </button>
+
+    <button onclick="location.href='progreso.html'">
+        📊
+        <span>Progreso</span>
+    </button>
+
+</nav>
+</body>
+</html>

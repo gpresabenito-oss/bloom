@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentación · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+<main class="app">
+
+    <h1>🍽️ Alimentación</h1>
+    <p class="subtitle">Primera semana de septiembre</p>
+
+    <div class="day-selector">
+        <button onclick="mostrarDia('lunes')">Lunes</button>
+        <button onclick="mostrarDia('martes')">Martes</button>
+        <button onclick="mostrarDia('miercoles')">Miércoles</button>
+        <button onclick="mostrarDia('jueves')">Jueves</button>
+        <button onclick="mostrarDia('viernes')">Viernes</button>
+        <button onclick="mostrarDia('sabado')">Sábado</button>
+        <button onclick="mostrarDia('domingo')">Domingo</button>
+    </div>
+
+    <section id="lunes" class="day-content">
+        <h2>🌸 Lunes</h2>
+
+        <div class="meal">
+            <h3>🍽️ Comida</h3>
+            <p>150 g pechuga de pollo</p>
+            <p>60 g arroz</p>
+            <p>130 g calabacín + 100 g pimiento + 100 g zanahoria</p>
+            <p>10 g aceite de oliva</p>
+            <p>1 kiwi</p>
+        </div>
+
+        <div class="meal">
+            <h3>🥛 Snack</h3>
+            <p>200 g kéfir</p>
+            <p>150 g fresas</p>
+            <p>15 g almendras</p>
+        </div>
+
+        <div class="meal">
+            <h3>🌙 Cena</h3>
+            <p>180 g ternera</p>
+            <p>250 g patata cocida</p>
+            <p>130 g brócoli + 100 g champiñones + 100 g tomate natural</p>
+            <p>10 g aceite de oliva</p>
+            <p>100 g frambuesas</p>
+        </div>
+    </section>
+
+    <section id="martes" class="day-content">
+        <h2>🌸 Martes</h2>
+
+        <div class="meal">
+            <h3>🍽️ Comida</h3>
+            <p>200 g pavo</p>
+            <p>75 g pasta cocida</p>
+            <p>100 g tomate triturado</p>
+            <p>130 g brócoli + 130 g champiñones</p>
+            <p>1 nectarina</p>
+        </div>
+
+        <div class="meal">
+            <h3>🥛 Snack</h3>
+            <p>200 g kéfir</p>
+            <p>110 g plátano</p>
+            <p>15 g nueces</p>
+        </div>
+
+        <div class="meal">
+            <h3>🌙 Cena</h3>
+            <p>180 g salmón</p>
+            <p>230 g boniato</p>
+            <p>130 g calabacín + 100 g berenjena + 100 g pimiento</p>
+            <p>5 g aceite de oliva</p>
+        </div>
+    </section>
+
+    <section id="miercoles" class="day-content">
+        <h2>🌸 Miércoles</h2>
+
+        <div class="meal">
+            <h3>🍽️ Comida</h3>
+            <p>180 g ternera</p>
+            <p>60 g arroz</p>
+            <p>130 g judías verdes + 100 g zanahoria + 100 g pimiento</p>
+            <p>10 g aceite de oliva</p>
+            <p>150 g cerezas</p>
+        </div>
+
+        <div class="meal">
+            <h3>🥛 Snack</h3>
+            <p>200 g kéfir</p>
+            <p>1 kiwi</p>
+            <p>15 g almendras</p>
+        </div>
+
+        <div class="meal">
+            <h3>🌙 Cena</h3>
+            <p>2 huevos + 120 g claras</p>
+            <p>250 g patata cocida</p>
+            <p>130 g calabacín + 100 g tomate + 100 g champiñones</p>
+            <p>100 g fresas</p>
+        </div>
+    </section>
+
+    <section id="jueves" class="day-content">
+        <h2>🌸 Jueves</h2>
+
+        <div class="meal">
+            <h3>🍽️ Comida</h3>
+            <p>200 g pollo</p>
+            <p>75 g pasta cocida</p>
+            <p>130 g berenjena + 100 g pimiento + 100 g calabacín</p>
+            <p>10 g aceite de oliva</p>
+            <p>1 nectarina</p>
+        </div>
+
+        <div class="meal">
+            <h3>🥛 Snack</h3>
+            <p>200 g kéfir</p>
+            <p>100 g frambuesas</p>
+            <p>15 g nueces</p>
+        </div>
+
+        <div class="meal">
+            <h3>🌙 Cena</h3>
+            <p>220 g merluza</p>
+            <p>230 g boniato</p>
+            <p>130 g brócoli + 100 g judías verdes + 100 g zanahoria</p>
+            <p>10 g aceite de oliva</p>
+            <p>1 kiwi</p>
+        </div>
+    </section>
+
+    <section id="viernes" class="day-content">
+        <h2>🌸 Viernes</h2>
+
+        <div class="meal">
+            <h3>🍽️ Comida</h3>
+            <p>180 g ternera</p>
+            <p>250 g patata</p>
+            <p>130 g calabacín + 100 g champiñones + 100 g pimiento</p>
+            <p>10 g aceite de oliva</p>
+            <p>150 g fresas</p>
+        </div>
+
+        <div class="meal">
+            <h3>🥛 Snack</h3>
+            <p>200 g kéfir</p>
+            <p>100 g plátano</p>
+            <p>15 g almendras</p>
+        </div>
+
+        <div class="meal">
+            <h3>🌙 Cena</h3>
+            <p>200 g pollo</p>
+            <p>60 g arroz cocido</p>
+            <p>130 g brócoli + 100 g zanahoria + 100 g tomate</p>
+            <p>10 g aceite de oliva</p>
+            <p>120 g cerezas</p>
+        </div>
+    </section>
+
+    <section id="sabado" class="day-content">
+        <h2>🌸 Sábado</h2>
+
+        <div class="meal">
+            <h3>🍽️ Comida</h3>
+            <p>200 g pavo/pollo</p>
+            <p>60 g arroz cocido</p>
+            <p>130 g berenjena + 100 g calabacín + 100 g pimiento</p>
+            <p>10 g aceite de oliva</p>
+            <p>150 g fruta</p>
+        </div>
+
+        <div class="meal">
+            <h3>🥛 Snack</h3>
+            <p>200 g kéfir</p>
+            <p>150 g fresas/frambuesas</p>
+            <p>15 g anacardo natural</p>
+        </div>
+
+        <div class="meal">
+            <h3>🌙 Cena</h3>
+            <p>180 g salmón</p>
+            <p>250 g patata</p>
+            <p>130 g brócoli + 100 g champiñones + 100 g judías verdes</p>
+            <p>5-10 g aceite de oliva</p>
+        </div>
+    </section>
+
+    <section id="domingo" class="day-content">
+        <h2>🌸 Domingo</h2>
+
+        <div class="meal">
+            <h3>🍽️ Comida</h3>
+            <p>200 g lomo de cerdo</p>
+            <p>230 g boniato</p>
+            <p>130 g berenjena + 100 g pimiento + 100 g brócoli</p>
+            <p>10 g aceite de oliva</p>
+            <p>100-150 g fruta</p>
+        </div>
+
+        <div class="meal">
+            <h3>🥛 Snack</h3>
+            <p>200 g kéfir</p>
+            <p>100-150 g fruta</p>
+        </div>
+
+        <div class="meal">
+            <h3>🌙 Cena</h3>
+            <p>2 huevos + 120 g claras</p>
+            <p>250 g patata</p>
+            <p>130 g calabacín + 100 g tomate + 100 g zanahoria</p>
+            <p>150 g fruta</p>
+        </div>
+    </section>
+
+    <button class="back-button" onclick="location.href='index.html'">
+        🏠 Volver al inicio
+    </button>
+
+</main>
+
+<script>
+    function mostrarDia(dia) {
+        const dias = document.querySelectorAll(".day-content");
+
+        dias.forEach(function(seccion) {
+            seccion.style.display = "none";
+        });
+
+        document.getElementById(dia).style.display = "block";
+    }
+
+    mostrarDia("lunes");
+</script>
+<nav class="bottom-nav">
+
+    <button onclick="location.href='index.html'">
+        🏠
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="location.href='entrenamiento.html'">
+        🏋🏼‍♀️
+        <span>Entreno</span>
+    </button>
+
+    <button onclick="location.href='alimentacion.html'">
+        🍽️
+        <span>Comidas</span>
+    </button>
+
+    <button onclick="location.href='agua.html'">
+        💧
+        <span>Agua</span>
+    </button>
+
+    <button onclick="location.href='progreso.html'">
+        📊
+        <span>Progreso</span>
+    </button>
+
+</nav>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión C · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+<main class="app">
+
+    <h1>🍑 Sesión C</h1>
+    <p class="subtitle">Glúteo + Pierna II</p>
+
+    <section class="workout-section">
+        <h2>🍑 Trabajo principal</h2>
+
+        <div class="exercise">
+            <h3>Hip thrust con pausa arriba</h3>
+            <p>4 × 10</p>
+            <p class="technique">Eleva la cadera y mantén 2-3 segundos arriba, apretando al máximo el glúteo antes de bajar.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Peso muerto rumano</h3>
+            <p>3 × 10-12</p>
+            <p class="technique">Lleva la cadera atrás manteniendo la espalda neutra y las pesas cerca de los muslos.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Step-up con bloque</h3>
+            <p>3 × 8 por lado</p>
+            <p class="technique">Sube al bloque empujando con la pierna que está apoyada y evita impulsarte con la de abajo.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Sentadilla sumo con mancuerna</h3>
+            <p>3 × 12</p>
+            <p class="technique">Coloca los pies más abiertos que los hombros y las puntas hacia fuera. Baja la pelvis entre las piernas manteniendo el torso erguido.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Patada de glúteo con banda</h3>
+            <p>3 × 15 por lado</p>
+            <p class="technique">Empuja la pierna hacia atrás concentrando el movimiento en el glúteo y evitando arquear la zona lumbar.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Abducciones con banda</h3>
+            <p>3 × 20</p>
+            <p class="technique">Con la banda sobre las rodillas, abre las piernas de forma fluida buscando máxima amplitud.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Aro entre muslos</h3>
+            <p>2 × 15</p>
+            <p class="technique">Coloca el aro entre los muslos y aprieta hacia dentro de forma pausada e intensa.</p>
+        </div>
+    </section>
+
+    <section class="workout-section">
+        <h2>🚲 Vuelta a la calma</h2>
+
+        <div class="exercise">
+            <h3>Bici</h3>
+            <p>12 min · Ritmo moderado</p>
+        </div>
+    </section>
+
+    <label class="completion">
+       <input type="checkbox" id="sesionCCompletada">
+        <span>✅ Sesión completada</span>
+    </label>
+
+    <button class="back-button" onclick="location.href='entrenamiento.html'">
+        ← Volver a entrenamiento
+    </button>
+
+    <button class="back-button" onclick="location.href='index.html'">
+        🏠 Volver al inicio
+    </button>
+<script>
+    let datosDiarios = obtenerDatosDiarios();
+
+    const checkbox = document.getElementById("sesionCCompletada");
+
+    checkbox.checked = datosDiarios.sesiones.includes("C");
+
+    checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+            if (!datosDiarios.sesiones.includes("C")) {
+                datosDiarios.sesiones.push("C");
+            }
+        } else {
+            datosDiarios.sesiones =
+                datosDiarios.sesiones.filter(sesion => sesion !== "C");
+        }
+
+        guardarDatosDiarios(datosDiarios);
+    });
+</script>
+</main>
+<nav class="bottom-nav">
+
+    <button onclick="location.href='index.html'">
+        🏠
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="location.href='entrenamiento.html'">
+        🏋🏼‍♀️
+        <span>Entreno</span>
+    </button>
+
+    <button onclick="location.href='alimentacion.html'">
+        🍽️
+        <span>Comidas</span>
+    </button>
+
+    <button onclick="location.href='agua.html'">
+        💧
+        <span>Agua</span>
+    </button>
+
+    <button onclick="location.href='progreso.html'">
+        📊
+        <span>Progreso</span>
+    </button>
+
+</nav>
+</body>
+</html>

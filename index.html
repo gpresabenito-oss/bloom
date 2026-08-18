@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <main class="app">
+        <<div class="home-header">
+    <div>
+        <p class="welcome">Buenos días 👋</p>
+        <h1>Bloom 🌸</h1>
+        <p class="subtitle">Tu bienestar, un día a la vez</p>
+    </div>
+
+    <div class="bloom-icon">
+        🌸
+    </div>
+</div>
+
+        <div class="menu">
+            <button onclick="location.href='entrenamiento.html'">
+    🏋🏼‍♀️ Entrenamiento
+</button>
+            <button onclick="location.href='alimentacion.html'">
+    🍽️ Comidas
+</button>
+            <button onclick="location.href='agua.html'">
+    💧 Agua
+</button>
+            <button onclick="location.href='progreso.html'">
+    📊 Progreso
+</button>
+        </div>
+
+        <section class="summary">
+            <h2>Resumen de hoy</h2>
+
+            <p id="entrenamientoResumen">🏋🏼‍♀️ Entrenamiento: pendiente</p>
+            <p>🍽️ Comidas: 0/3</p>
+            <p id="aguaResumen">💧 Agua: 0/8 vasos</p>
+            <p id="pesoResumen">📊 Peso: -- kg</p>
+            <div class="daily-progress">
+    <div class="progress-bar">
+        <div id="progressFill"></div>
+    </div>
+
+    <p id="progressText">Tu progreso de hoy: 0%</p>
+</div>
+        </section>
+    </main>
+<script>
+    const vasosBebidos = JSON.parse(
+        localStorage.getItem("vasosBebidos") || "[]"
+    );
+
+    document.getElementById("aguaResumen").textContent =
+        `💧 Agua: ${vasosBebidos.length}/8 vasos`;
+</script>
+<script>
+    const registrosPeso = JSON.parse(
+        localStorage.getItem("historialPeso") || "[]"
+    );
+
+    const pesoResumen = document.getElementById("pesoResumen");
+
+    if (registrosPeso.length > 0) {
+        const ultimoRegistro = registrosPeso[registrosPeso.length - 1];
+
+        pesoResumen.textContent =
+            `📊 Peso: ${ultimoRegistro.peso} kg`;
+    }
+</script>
+<script>
+    const sesiones = [
+        "sesionACompletada",
+        "sesionBCompletada",
+        "sesionCCompletada",
+        "sesionDCompletada",
+        "sesionECompletada"
+    ];
+
+    const sesionesCompletadas = sesiones.filter(
+        sesion => localStorage.getItem(sesion) === "true"
+    ).length;
+
+    const entrenamientoResumen =
+        document.getElementById("entrenamientoResumen");
+
+    if (sesionesCompletadas > 0) {
+        entrenamientoResumen.textContent =
+            `🏋🏼‍♀️ Entrenamiento: ${sesionesCompletadas}/5 sesiones completadas`;
+    }
+</script>
+<script>
+    const vasosBebidos = JSON.parse(
+        localStorage.getItem("vasosBebidos") || "[]"
+    );
+
+    const aguaResumen = document.getElementById("aguaResumen");
+
+    aguaResumen.textContent =
+        `💧 Agua: ${vasosBebidos.length}/8 vasos`;
+</script>
+<script>
+    const sesionesProgreso = [
+        "sesionACompletada",
+        "sesionBCompletada",
+        "sesionCCompletada",
+        "sesionDCompletada",
+        "sesionECompletada"
+    ];
+
+    const entrenamientoHecho = sesionesProgreso.some(
+        sesion => localStorage.getItem(sesion) === "true"
+    );
+
+    const vasosProgreso = JSON.parse(
+        localStorage.getItem("vasosBebidos") || "[]"
+    );
+
+    const aguaHecha = vasosProgreso.length >= 8;
+
+    const pesosProgreso = JSON.parse(
+        localStorage.getItem("historialPeso") || "[]"
+    );
+
+    const pesoHecho = pesosProgreso.length > 0;
+
+    let progreso = 0;
+
+    if (entrenamientoHecho) progreso += 33;
+    if (aguaHecha) progreso += 33;
+    if (pesoHecho) progreso += 34;
+
+    document.getElementById("progressFill").style.width =
+        progreso + "%";
+
+    document.getElementById("progressText").textContent =
+        `Tu progreso de hoy: ${progreso}%`;
+</script>
+
+</body>
+</html>

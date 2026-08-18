@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión A · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <main class="app">
+        <h1>🍑 Sesión A</h1>
+        <p class="subtitle">Glúteo + Pierna</p>
+
+        <section class="workout-section">
+            <h2>🔥 Calentamiento · 7-8 min</h2>
+
+            <div class="exercise">
+                <h3>🚲 Bici suave</h3>
+                <p>5 min · Ritmo cómodo</p>
+            </div>
+
+            <div class="exercise">
+                <h3>🦵 Sentadillas sin peso</h3>
+                <p>10 repeticiones</p>
+            </div>
+
+            <div class="exercise">
+                <h3>🍑 Puentes de glúteo</h3>
+                <p>10 repeticiones</p>
+            </div>
+
+            <div class="exercise">
+                <h3>🦵 Abducciones con banda</h3>
+                <p>10 por lado</p>
+            </div>
+
+            <div class="exercise">
+                <h3>🔄 Movilidad de cadera</h3>
+                <p>Rotaciones de cadera</p>
+            </div>
+        </section>
+
+        <section class="workout-section">
+            <h2>🍑 Trabajo principal</h2>
+
+            <div class="exercise">
+                <h3>Hip thrust con mancuerna</h3>
+                <p>4 × 10-12</p>
+                <p class="technique">
+                    Espalda apoyada en un banco. Mancuerna sobre la pelvis.
+                    Empuja desde los talones, eleva la cadera y aprieta el glúteo
+                    durante 1 segundo arriba.
+                </p>
+            </div>
+
+            <div class="exercise">
+                <h3>Sentadilla goblet con mancuerna</h3>
+                <p>3 × 10-12</p>
+                <p class="technique">
+                    Sujeta la mancuerna junto al pecho. Baja llevando la cadera
+                    atrás y mantén las rodillas alineadas con las puntas de los pies.
+                </p>
+            </div>
+
+            <div class="exercise">
+                <h3>Peso muerto rumano con mancuerna</h3>
+                <p>3 × 10-12 por lado</p>
+                <p class="technique">
+                    Lleva la cadera hacia atrás con las rodillas ligeramente
+                    flexionadas y mantén la espalda neutra hasta notar trabajo
+                    en isquiotibiales y glúteos.
+                </p>
+            </div>
+
+            <div class="exercise">
+                <h3>Zancada atrás</h3>
+                <p>3 × 8-10 por pierna</p>
+                <p class="technique">
+                    Da un paso amplio hacia atrás y baja la rodilla trasera.
+                    Mantén el peso principalmente en el talón de la pierna delantera.
+                </p>
+            </div>
+
+            <div class="exercise">
+                <h3>Abducción con banda cerrada</h3>
+                <p>3 × 15-20</p>
+                <p class="technique">
+                    Con la banda sobre las rodillas, separa las rodillas
+                    hacia fuera de forma controlada manteniendo tensión constante.
+                </p>
+            </div>
+
+            <div class="exercise">
+                <h3>Puente de glúteo + aro entre rodillas</h3>
+                <p>3 × 12-15</p>
+                <p class="technique">
+                    Aprieta el aro hacia dentro mientras elevas la cadera
+                    y contrae los glúteos arriba.
+                </p>
+            </div>
+        </section>
+
+        <section class="workout-section">
+            <h2>💗 Vuelta a la calma</h2>
+
+            <div class="exercise">
+                <h3>🚲 Bici</h3>
+                <p>10 min · Ritmo moderado</p>
+            </div>
+        </section>
+
+        <label class="completion">
+            <input type="checkbox" id="sesionACompletada">
+            <span>✅ Sesión completada</span>
+        </label>
+<script>
+    let datosDiarios = obtenerDatosDiarios();
+
+    const checkbox = document.getElementById("sesionACompletada");
+
+    checkbox.checked = datosDiarios.sesiones.includes("A");
+
+    checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+            if (!datosDiarios.sesiones.includes("A")) {
+                datosDiarios.sesiones.push("A");
+            }
+        } else {
+            datosDiarios.sesiones =
+                datosDiarios.sesiones.filter(sesion => sesion !== "A");
+        }
+
+        guardarDatosDiarios(datosDiarios);
+    });
+</script>
+        <button class="back-button" onclick="location.href='entrenamiento.html'">
+            ← Volver a entrenamiento
+        </button>
+
+        <button class="back-button" onclick="location.href='index.html'">
+            🏠 Volver al inicio
+        </button>
+    </main>
+<nav class="bottom-nav">
+
+    <button onclick="location.href='index.html'">
+        🏠
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="location.href='entrenamiento.html'">
+        🏋🏼‍♀️
+        <span>Entreno</span>
+    </button>
+
+    <button onclick="location.href='alimentacion.html'">
+        🍽️
+        <span>Comidas</span>
+    </button>
+
+    <button onclick="location.href='agua.html'">
+        💧
+        <span>Agua</span>
+    </button>
+
+    <button onclick="location.href='progreso.html'">
+        📊
+        <span>Progreso</span>
+    </button>
+
+</nav>
+</body>
+</html>

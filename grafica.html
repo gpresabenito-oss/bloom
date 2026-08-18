@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+
+<main class="app">
+
+    <h1>📈 Evolución</h1>
+    <p class="subtitle">Observa tus cambios con el tiempo</p>
+
+    <section class="progress-card">
+
+        <h2>Elige qué quieres ver</h2>
+
+        <div class="chart-selector">
+            <button onclick="mostrarGrafica('peso')">
+                ⚖️ Peso
+            </button>
+
+            <button onclick="mostrarGrafica('cintura')">
+                📏 Cintura
+            </button>
+
+            <button onclick="mostrarGrafica('cadera')">
+                🍑 Cadera
+            </button>
+
+            <button onclick="mostrarGrafica('muslo')">
+                🦵 Muslo
+            </button>
+        </div>
+
+    </section>
+
+    <section class="chart-card">
+
+        <h2 id="tituloGrafica">⚖️ Peso</h2>
+
+        <div class="chart-container">
+            <canvas id="grafica"></canvas>
+        </div>
+
+        <p id="sinDatos" class="no-data">
+            Todavía no hay suficientes registros para mostrar la evolución.
+        </p>
+
+    </section>
+
+    <button class="back-button" onclick="location.href='progreso.html'">
+        ← Volver a progreso
+    </button>
+
+    <button class="back-button" onclick="location.href='index.html'">
+        🏠 Volver al inicio
+    </button>
+
+</main>
+
+<script>
+    let graficaActual = null;
+
+    function obtenerRegistros() {
+        return JSON.parse(
+            localStorage.getItem("historialMedidas") || "[]"
+        );
+    }
+
+    function mostrarGrafica(tipo) {
+
+        const registros = obtenerRegistros();
+        const canvas = document.getElementById("grafica");
+        const sinDatos = document.getElementById("sinDatos");
+        const titulo = document.getElementById("tituloGrafica");
+
+        const nombres = {
+            peso: "⚖️ Peso",
+            cintura: "📏 Cintura",
+            cadera: "🍑 Cadera",
+            muslo: "🦵 Muslo"
+        };
+
+        const unidades = {
+            peso: "kg",
+            cintura: "cm",
+            cadera: "cm",
+            muslo: "cm"
+        };
+
+        titulo.textContent = nombres[tipo];
+
+        if (graficaActual) {
+            graficaActual.destroy();
+        }
+
+        if (registros.length === 0) {
+            canvas.style.display = "none";
+            sinDatos.style.display = "block";
+            return;
+        }
+
+        canvas.style.display = "block";
+        sinDatos.style.display = "none";
+
+        const fechas = registros.map(registro => registro.fecha);
+        const valores = registros.map(registro => registro[tipo]);
+
+        graficaActual = new Chart(canvas, {
+            type: "line",
+            data: {
+                labels: fechas,
+                datasets: [{
+                    label: `${nombres[tipo]} (${unidades[tipo]})`,
+                    data: valores,
+                    tension: 0.3,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+    }
+
+    mostrarGrafica("peso");
+</script>
+
+</body>
+</html>

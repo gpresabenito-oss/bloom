@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agua · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+<main class="app">
+
+    <h1>💧 Agua</h1>
+    <p class="subtitle">Tu objetivo de hoy: 8 vasos</p>
+
+    <section class="water-card">
+
+        <p class="water-counter">0 / 8 vasos</p>
+
+        <div class="water-glasses">
+
+            <button class="water-glass" onclick="beberVaso(0)">
+                🥛
+            </button>
+
+            <button class="water-glass" onclick="beberVaso(1)">
+                🥛
+            </button>
+
+            <button class="water-glass" onclick="beberVaso(2)">
+                🥛
+            </button>
+
+            <button class="water-glass" onclick="beberVaso(3)">
+                🥛
+            </button>
+
+            <button class="water-glass" onclick="beberVaso(4)">
+                🥛
+            </button>
+
+            <button class="water-glass" onclick="beberVaso(5)">
+                🥛
+            </button>
+
+            <button class="water-glass" onclick="beberVaso(6)">
+                🥛
+            </button>
+
+            <button class="water-glass" onclick="beberVaso(7)">
+                🥛
+            </button>
+
+        </div>
+
+    </section>
+
+    <button class="back-button" onclick="location.href='index.html'">
+        🏠 Volver al inicio
+    </button>
+
+</main>
+<script>
+    const vasos = document.querySelectorAll(".water-glass");
+
+    let datosDiarios = obtenerDatosDiarios();
+    let vasosBebidos = datosDiarios.vasos;
+
+    function actualizarVasos() {
+        vasos.forEach((vaso, indice) => {
+            vaso.classList.toggle(
+                "filled",
+                vasosBebidos.includes(indice)
+            );
+        });
+
+        document.querySelector(".water-counter").textContent =
+            `${vasosBebidos.length} / 8 vasos`;
+    }
+
+    function beberVaso(indice) {
+        if (vasosBebidos.includes(indice)) {
+            vasosBebidos = vasosBebidos.filter(
+                vaso => vaso !== indice
+            );
+        } else {
+            vasosBebidos.push(indice);
+        }
+
+        datosDiarios.vasos = vasosBebidos;
+        guardarDatosDiarios(datosDiarios);
+
+        actualizarVasos();
+    }
+
+    actualizarVasos();
+</script>
+<nav class="bottom-nav">
+
+    <button onclick="location.href='index.html'">
+        🏠
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="location.href='entrenamiento.html'">
+        🏋🏼‍♀️
+        <span>Entreno</span>
+    </button>
+
+    <button onclick="location.href='alimentacion.html'">
+        🍽️
+        <span>Comidas</span>
+    </button>
+
+    <button onclick="location.href='agua.html'">
+        💧
+        <span>Agua</span>
+    </button>
+
+    <button onclick="location.href='progreso.html'">
+        📊
+        <span>Progreso</span>
+    </button>
+
+</nav>
+</body>
+</html>

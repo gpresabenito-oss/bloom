@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesión D · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+<main class="app">
+
+    <h1>❤️ Sesión D</h1>
+    <p class="subtitle">Cardio + Core</p>
+
+    <section class="workout-section">
+        <h2>🚲 Bici · 30 min</h2>
+
+        <div class="exercise">
+            <h3>Calentamiento</h3>
+            <p>5 min · Ritmo suave</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Intervalos</h3>
+            <p>20 min · 5 bloques</p>
+            <p class="technique">Cada bloque: 3 min a ritmo moderado + 1 min a intensidad más elevada.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Enfriamiento</h3>
+            <p>5 min · Ritmo suave</p>
+        </div>
+    </section>
+
+    <section class="workout-section">
+        <h2>🔥 Circuito de core · 3 rondas</h2>
+
+        <div class="exercise">
+            <h3>Dead bug</h3>
+            <p>10 por lado</p>
+            <p class="technique">Mantén la zona lumbar pegada al suelo durante todo el recorrido.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Plancha</h3>
+            <p>25 s</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Bird dog</h3>
+            <p>10 por lado</p>
+            <p class="technique">Extiende brazo y pierna contrarios priorizando el control y la estabilidad.</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Crunch con pelota pequeña</h3>
+            <p>12 repeticiones</p>
+        </div>
+
+        <div class="exercise">
+            <h3>Puente de glúteo</h3>
+            <p>15 repeticiones</p>
+            <p class="technique">Eleva la cadera activando los glúteos sin arquear la espalda baja.</p>
+        </div>
+    </section>
+
+    <label class="completion">
+        <input type="checkbox" id="sesionDCompletada">
+        <span>✅ Sesión completada</span>
+    </label>
+
+    <button class="back-button" onclick="location.href='entrenamiento.html'">
+        ← Volver a entrenamiento
+    </button>
+
+    <button class="back-button" onclick="location.href='index.html'">
+        🏠 Volver al inicio
+    </button>
+<script>
+    let datosDiarios = obtenerDatosDiarios();
+
+    const checkbox = document.getElementById("sesionDCompletada");
+
+    checkbox.checked = datosDiarios.sesiones.includes("D");
+
+    checkbox.addEventListener("change", function () {
+        if (checkbox.checked) {
+            if (!datosDiarios.sesiones.includes("D")) {
+                datosDiarios.sesiones.push("D");
+            }
+        } else {
+            datosDiarios.sesiones =
+                datosDiarios.sesiones.filter(sesion => sesion !== "D");
+        }
+
+        guardarDatosDiarios(datosDiarios);
+    });
+</script>
+</main>
+<nav class="bottom-nav">
+
+    <button onclick="location.href='index.html'">
+        🏠
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="location.href='entrenamiento.html'">
+        🏋🏼‍♀️
+        <span>Entreno</span>
+    </button>
+
+    <button onclick="location.href='alimentacion.html'">
+        🍽️
+        <span>Comidas</span>
+    </button>
+
+    <button onclick="location.href='agua.html'">
+        💧
+        <span>Agua</span>
+    </button>
+
+    <button onclick="location.href='progreso.html'">
+        📊
+        <span>Progreso</span>
+    </button>
+
+</nav>
+</body>
+</html>

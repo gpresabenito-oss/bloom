@@ -1,0 +1,494 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #fce8f0;
+    color: #5c3b48;
+    text-align: center;
+}
+
+.app {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 28px 20px 40px;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 10px 0 6px;
+}
+
+.subtitle {
+    font-size: 20px;
+    margin: 0 0 28px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.menu button {
+    width: 100%;
+    padding: 18px;
+    border: none;
+    border-radius: 18px;
+    background: white;
+    color: #5c3b48;
+    font-size: 19px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(92, 59, 72, 0.12);
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.menu button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(92, 59, 72, 0.16);
+}
+
+.menu button:active {
+    transform: scale(0.98);
+}
+
+.summary {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 22px;
+}
+
+.summary h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.summary p {
+    font-size: 16px;
+    margin: 12px 0;
+}
+.workout-section {
+    margin-top: 28px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 22px;
+}
+
+.workout-section h2 {
+    margin-top: 0;
+    font-size: 22px;
+}
+
+.exercise {
+    background: white;
+    border-radius: 18px;
+    padding: 16px;
+    margin-top: 12px;
+    text-align: left;
+    box-shadow: 0 3px 10px rgba(92, 59, 72, 0.08);
+}
+
+.exercise h3 {
+    margin: 0 0 7px;
+    font-size: 18px;
+}
+
+.exercise p {
+    margin: 4px 0;
+    font-size: 15px;
+}
+
+.exercise .technique {
+    margin-top: 10px;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.completion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 28px 0 16px;
+    padding: 17px;
+    background: white;
+    border-radius: 18px;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(92, 59, 72, 0.1);
+}
+
+.completion input {
+    width: 22px;
+    height: 22px;
+    accent-color: #d98eaa;
+}
+
+.back-button {
+    width: 100%;
+    padding: 15px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #5c3b48;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* 🍽️ Alimentación */
+
+.day-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.day-selector button {
+    border: none;
+    padding: 12px 8px;
+    border-radius: 14px;
+    background: white;
+    color: #5c3b48;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 3px 9px rgba(92, 59, 72, 0.08);
+    cursor: pointer;
+}
+
+.day-selector button:active {
+    transform: scale(0.97);
+}
+
+.day-content {
+    margin-top: 20px;
+}
+
+.day-content h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
+}
+
+.meal {
+    background: white;
+    border-radius: 20px;
+    padding: 18px;
+    margin-bottom: 16px;
+    text-align: left;
+    box-shadow: 0 4px 12px rgba(92, 59, 72, 0.08);
+}
+
+.meal h3 {
+    margin: 0 0 12px;
+    font-size: 20px;
+}
+
+.meal p {
+    margin: 7px 0;
+    font-size: 15px;
+    line-height: 1.45;
+}
+/* 💧 Agua */
+
+.water-card {
+    margin-top: 25px;
+    padding: 24px 18px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 24px;
+}
+
+.water-counter {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0 0 22px;
+}
+
+.water-glasses {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    justify-items: center;
+}
+
+.water-glass {
+    width: 64px;
+    height: 78px;
+    border: 3px solid #d98eaa;
+    border-radius: 8px 8px 16px 16px;
+    background: linear-gradient(to top, transparent 0%);
+    font-size: 0;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.15s ease;
+}
+
+.water-glass::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 0%;
+    background: #b9e7f5;
+    transition: height 0.3s ease;
+}
+
+.water-glass.filled::after {
+    height: 78%;
+}
+
+.water-glass:active {
+    transform: scale(0.94);
+}
+/* 📊 Progreso */
+
+.progress-card {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 22px;
+    box-shadow: 0 4px 12px rgba(92, 59, 72, 0.08);
+}
+
+.progress-card h2 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+#pesoInput,
+#cinturaInput,
+#caderaInput,
+#musloInput {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    margin-bottom: 10px;
+    border: 2px solid #f0c4d4;
+    border-radius: 14px;
+    background: white;
+    color: #5c3b48;
+    font-size: 17px;
+    outline: none;
+}
+
+#pesoInput:focus,
+#cinturaInput:focus,
+#caderaInput:focus,
+#musloInput:focus {
+    border-color: #d98eaa;
+}
+
+.save-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: #d98eaa;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.save-button:active {
+    transform: scale(0.98);
+}
+
+.weight-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 13px 0;
+    border-bottom: 1px solid #f1dce5;
+    font-size: 15px;
+}
+
+.weight-entry:last-child {
+    border-bottom: none;
+}
+
+.weight-entry strong {
+    font-size: 17px;
+}
+/* 🌸 Progreso diario */
+
+.daily-progress {
+    margin-top: 22px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #f4dce5;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+#progressFill {
+    width: 0%;
+    height: 100%;
+    background: #d98eaa;
+    border-radius: 999px;
+    transition: width 0.4s ease;
+}
+
+#progressText {
+    margin: 10px 0 0;
+    font-size: 15px;
+    font-weight: bold;
+}
+/* 📈 Gráficas */
+
+.chart-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 15px;
+    border: none;
+    border-radius: 16px;
+    background: white;
+    color: #5c3b48;
+    font-size: 17px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(92, 59, 72, 0.08);
+    cursor: pointer;
+}
+
+.chart-button:active {
+    transform: scale(0.98);
+}
+
+.chart-selector {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.chart-selector button {
+    border: none;
+    padding: 13px 8px;
+    border-radius: 14px;
+    background: white;
+    color: #5c3b48;
+    font-size: 15px;
+    font-weight: bold;
+    box-shadow: 0 3px 9px rgba(92, 59, 72, 0.08);
+    cursor: pointer;
+}
+
+.chart-selector button:active {
+    transform: scale(0.97);
+}
+
+.chart-card {
+    margin-top: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.65);
+    border-radius: 22px;
+    box-shadow: 0 4px 12px rgba(92, 59, 72, 0.08);
+}
+
+.chart-card h2 {
+    margin-top: 0;
+    font-size: 21px;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 280px;
+}
+
+.no-data {
+    display: none;
+    font-size: 15px;
+    line-height: 1.5;
+}
+/* 🏠 Inicio Bloom */
+
+.home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.welcome {
+    margin: 0 0 4px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.home-header h1 {
+    margin: 0;
+    font-size: 34px;
+}
+
+.home-header .subtitle {
+    margin: 5px 0 0;
+    font-size: 15px;
+}
+
+.bloom-icon {
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 18px;
+    font-size: 30px;
+    box-shadow: 0 4px 12px rgba(92, 59, 72, 0.10);
+}
+/* 📱 Navegación inferior */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: min(500px, 100%);
+    box-sizing: border-box;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+
+    padding: 10px 8px 12px;
+
+    background: rgba(255, 255, 255, 0.96);
+    border-top: 1px solid #f1dce5;
+    box-shadow: 0 -4px 15px rgba(92, 59, 72, 0.08);
+
+    z-index: 1000;
+}
+
+.bottom-nav button {
+    border: none;
+    background: transparent;
+    color: #5c3b48;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.bottom-nav button span {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.bottom-nav button:active {
+    transform: scale(0.94);
+}
+
+body {
+    padding-bottom: 90px;
+}

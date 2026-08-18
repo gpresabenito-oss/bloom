@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progreso · Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#d98eaa">
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+<main class="app">
+
+    <h1>📊 Progreso</h1>
+    <p class="subtitle">Sigue tu evolución</p>
+
+    <section class="progress-card">
+
+    <h2>📏 Registrar medidas</h2>
+
+    <input
+        type="number"
+        id="pesoInput"
+        placeholder="Peso (kg)"
+        step="0.1"
+        min="0"
+    >
+
+    <input
+        type="number"
+        id="cinturaInput"
+        placeholder="Cintura (cm)"
+        step="0.1"
+        min="0"
+    >
+
+    <input
+        type="number"
+        id="caderaInput"
+        placeholder="Cadera (cm)"
+        step="0.1"
+        min="0"
+    >
+
+    <input
+        type="number"
+        id="musloInput"
+        placeholder="Muslo (cm)"
+        step="0.1"
+        min="0"
+    >
+
+    <button class="save-button" onclick="guardarMedidas()">
+        Guardar registro
+    </button>
+<button class="chart-button" onclick="location.href='grafica.html'">
+    📈 Ver evolución
+</button>
+</section>
+
+    <section class="progress-card">
+
+        <h2>📈 Historial</h2>
+
+        <div id="historial">
+            <p>Aún no hay registros.</p>
+        </div>
+
+    </section>
+
+    <button class="back-button" onclick="location.href='index.html'">
+        🏠 Volver al inicio
+    </button>
+
+</main>
+
+<script>
+    function guardarMedidas() {
+        const peso = parseFloat(document.getElementById("pesoInput").value);
+        const cintura = parseFloat(document.getElementById("cinturaInput").value);
+        const cadera = parseFloat(document.getElementById("caderaInput").value);
+        const muslo = parseFloat(document.getElementById("musloInput").value);
+
+        if (
+            isNaN(peso) ||
+            isNaN(cintura) ||
+            isNaN(cadera) ||
+            isNaN(muslo) ||
+            peso <= 0 ||
+            cintura <= 0 ||
+            cadera <= 0 ||
+            muslo <= 0
+        ) {
+            alert("Rellena las cuatro medidas con valores válidos.");
+            return;
+        }
+
+        const registros = JSON.parse(
+            localStorage.getItem("historialMedidas") || "[]"
+        );
+
+        registros.push({
+            fecha: new Date().toLocaleDateString("es-ES"),
+            peso: peso,
+            cintura: cintura,
+            cadera: cadera,
+            muslo: muslo
+        });
+
+        localStorage.setItem(
+            "historialMedidas",
+            JSON.stringify(registros)
+        );
+
+        document.getElementById("pesoInput").value = "";
+        document.getElementById("cinturaInput").value = "";
+        document.getElementById("caderaInput").value = "";
+        document.getElementById("musloInput").value = "";
+
+        mostrarHistorial();
+    }
+
+    function mostrarHistorial() {
+        const historial = document.getElementById("historial");
+
+        const registros = JSON.parse(
+            localStorage.getItem("historialMedidas") || "[]"
+        );
+
+        if (registros.length === 0) {
+            historial.innerHTML = "<p>Aún no hay registros.</p>";
+            return;
+        }
+
+        historial.innerHTML = "";
+
+        registros.forEach(function(registro) {
+            const elemento = document.createElement("div");
+
+            elemento.className = "weight-entry";
+
+            elemento.innerHTML = `
+                <div>
+                    <strong>📅 ${registro.fecha}</strong><br>
+                    ⚖️ ${registro.peso} kg ·
+                    📏 Cintura: ${registro.cintura} cm<br>
+                    🍑 Cadera: ${registro.cadera} cm ·
+                    🦵 Muslo: ${registro.muslo} cm
+                </div>
+            `;
+
+            historial.appendChild(elemento);
+        });
+    }
+
+    mostrarHistorial();
+</script>
+<nav class="bottom-nav">
+
+    <button onclick="location.href='index.html'">
+        🏠
+        <span>Inicio</span>
+    </button>
+
+    <button onclick="location.href='entrenamiento.html'">
+        🏋🏼‍♀️
+        <span>Entreno</span>
+    </button>
+
+    <button onclick="location.href='alimentacion.html'">
+        🍽️
+        <span>Comidas</span>
+    </button>
+
+    <button onclick="location.href='agua.html'">
+        💧
+        <span>Agua</span>
+    </button>
+
+    <button onclick="location.href='progreso.html'">
+        📊
+        <span>Progreso</span>
+    </button>
+
+</nav>
+</body>
+</html>
