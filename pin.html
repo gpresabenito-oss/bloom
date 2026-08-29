@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom · Acceso 🌸</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main class="app pin-screen">
+
+    <div class="bloom-icon">
+        🌸
+    </div>
+
+    <h1>Bloom</h1>
+    <p class="subtitle">Introduce tu PIN para continuar</p>
+
+    <div class="pin-card">
+
+        <input
+            type="password"
+            id="pinInput"
+            inputmode="numeric"
+            maxlength="6"
+            placeholder="••••"
+        >
+
+        <button class="save-button" onclick="comprobarPin()">
+            Entrar
+        </button>
+
+        <p id="pinError" class="pin-error"></p>
+
+    </div>
+
+</main>
+
+<script>
+    const PIN_CORRECTO = "2704";
+
+    function comprobarPin() {
+        const pin = document.getElementById("pinInput").value;
+        const error = document.getElementById("pinError");
+
+        if (pin === PIN_CORRECTO) {
+            sessionStorage.setItem("bloomDesbloqueada", "true");
+            window.location.href = "index.html";
+        } else {
+            error.textContent = "PIN incorrecto";
+            document.getElementById("pinInput").value = "";
+        }
+    }
+
+    document.getElementById("pinInput").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            comprobarPin();
+        }
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bloom 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#d98eaa">
+    <link rel="apple-touch-icon" href="icon-512.png">
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <main class="app">
+<div class="home-header">
+    <div>
+        <p class="welcome">Buenos días 👋</p>
+        <h1>Bloom 🌸</h1>
+        <p class="subtitle">Tu bienestar, un día a la vez</p>
+    </div>
+
+    <div class="bloom-icon">
+        🌸
+    </div>
+</div>
+
+        <div class="menu">
+            <button onclick="location.href='entrenamiento.html'">
+    🏋🏼‍♀️ Entrenamiento
+</button>
+            <button onclick="location.href='alimentacion.html'">
+    🍽️ Comidas
+</button>
+            <button onclick="location.href='agua.html'">
+    💧 Agua
+</button>
+            <button onclick="location.href='progreso.html'">
+    📊 Progreso
+</button>
+        </div>
+
+        <section class="summary">
+            <h2>Resumen de hoy</h2>
+
+            <p id="entrenamientoResumen">🏋🏼‍♀️ Entrenamiento: pendiente</p>
+            <p id="aguaResumen">💧 Agua: 0/8 vasos</p>
+            <p id="pesoResumen">📊 Peso: -- kg</p>
+        </section>
+    </main>
+<script>
+    const datosDiarios = obtenerDatosDiarios();
+
+    /* 🏋🏼‍♀️ Entrenamiento */
+
+    const sesionesCompletadas = datosDiarios.sesiones.length;
+
+    document.getElementById("entrenamientoResumen").textContent =
+        sesionesCompletadas > 0
+            ? `🏋🏼‍♀️ Entrenamiento: ${sesionesCompletadas}/5 sesiones completadas`
+            : "🏋🏼‍♀️ Entrenamiento: pendiente";
+
+
+    /* 💧 Agua */
+
+    const vasosBebidos = datosDiarios.vasos.length;
+
+    document.getElementById("aguaResumen").textContent =
+        `💧 Agua: ${vasosBebidos}/8 vasos`;
+
+
+    /* 📊 Último peso */
+
+    const registrosPeso = JSON.parse(
+        localStorage.getItem("historialMedidas") || "[]"
+    );
+
+    const pesoResumen = document.getElementById("pesoResumen");
+
+    if (registrosPeso.length > 0) {
+        const ultimoRegistro =
+            registrosPeso[registrosPeso.length - 1];
+
+        pesoResumen.textContent =
+            `📊 Peso: ${ultimoRegistro.peso} kg`;
+    }
+</script>
+</body>
+</html>
